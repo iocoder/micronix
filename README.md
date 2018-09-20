@@ -118,17 +118,17 @@ the appropriate programs are loaded to memory.
 
 To conclude, the microkernel contains the following components:
 
-* init: initialization sequence.
-* fw: firmware (UEFI) interface.
-* tty: printk() interface (initially handled by fw).
-* file: fread() interface (initially handled by fw).
-* splash: prints splash screen using printk().
-* arch: architecture-related routines (x86).
-* slot: slot manager (vmman).
-* con: context manager and switching.
-* ipc: message-passing manager.
-* load: platform-specific loader (ELF?) - uses fread().
-* syscall: system-call interface.
+* `init.c`: initialization sequence.
+* `fw.h`: firmware interface; implemented by `fw_efi.c`.
+* `tty.c`: printk interface (initially handled by fw).
+* `file.c`: fread interface (initially handled by fw).
+* `load.h`: platform-specific loader; implemented by `load_elf.c`.
+* `splash.c`: prints splash screen using printk.
+* `arch.h`: architecture-related routines; implemented by `arch_x86.c`.
+* `con.c`: context manager and switching.
+* `slot.c`: slot manager.
+* `ipc.c`: message-passing manager.
+* `syscall.c`: system-call interface.
 
 The `init()` function does the following:
 1. `fw_init() # handled by efi_init()`
