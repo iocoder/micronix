@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 echo "Compiling Systema compiler for UNIX environment"
 
 INSTALL_DIR=$1/Programs/Systema
